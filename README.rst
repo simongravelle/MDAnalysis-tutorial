@@ -7,9 +7,6 @@ together with Python version 3.11.4.
 
 .. _link_target: tutorial/mdanalysis-tutorial.rst
 
-.. figure:: tutorial/figures/step4.png
-    :alt: VMD tutorial for LAMMPS
-
 These guides are provided as a support to the LAMMPS tutorial `webpage <lammps_tutorials_>`_.
 
 .. _lammps_tutorials: https://lammpstutorials.github.io
