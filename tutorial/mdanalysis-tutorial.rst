@@ -1,5 +1,3 @@
-.. _mda-label:
-
 MDAnalysis tutorials
 ********************
 
@@ -11,9 +9,9 @@ The main advantage of post-mortem analysis is that there is no need to
 know what we want to measure before starting the simulation. 
 
 In these short tutorials, several trajectories are imported into Python using
-MDAnalysis and different information is extracted. All the trajectories required for these
-tutorials are provided below and were generated from one of the LAMMPS tutorials
-from `LAMMPStutorials.github.io <lammps_tutorials_>`_.
+MDAnalysis and different information is extracted. All the trajectories required
+for these tutorials are provided below and were generated from one of the tutorials
+from the `LAMMPStutorials <lammps_tutorials_>`_ webpage.
 
 .. _lammps_tutorials: https://lammpstutorials.github.io
 
@@ -57,12 +55,9 @@ and the *dump.lammpstrj* file as trajectory. Add the following lines into the no
 Read topology information
 -------------------------
 
-From the :ref:`all-atoms-label` tutorial, we know that atom
-types 1 to 7 are from the PEG atoms, and atom types 8 and 9 are from
-the water molecules. 
-
-One can create atom groups using the atom types with the *select_atoms* option
-of MDAnalysis:
+Atom types 1 to 7 are from the PEG atoms, and atom types 8 and 9 are from
+the water molecules. One can create atom groups using the atom types with the
+*select_atoms* option of MDAnalysis:
 
 .. code-block:: python
 
@@ -131,8 +126,8 @@ during the simulation.
     :alt: plot of the position-atom
     :class: only-light
 
-Figure: Position of the *atom1* along time. The size of the disks
-is proportional to the frame ID.
+Figure: Position of the *atom1* along time. The size of the disks is proportional
+to the frame ID.
 
 Counting the bonds of a CNT
 ===========================
