@@ -18,8 +18,9 @@ tutorials are provided below and were generated from one of the LAMMPS tutorials
 Simple trajectory import 
 ========================
 
-Here, we re-use a trajectory generated during the :ref:`all-atoms-label` tutorial.
-Download the |dump_all_atom| and the |data_all_atom| files to continue with this tutorial.
+Here, we re-use a trajectory generated during the *Polymer in water* tutorial
+from the LAMMPS tutorials webpage. Download the |dump_all_atom| and the |data_all_atom|
+files to continue with this tutorial.
 
 .. |dump_all_atom| raw:: html
 
@@ -58,7 +59,8 @@ From the :ref:`all-atoms-label` tutorial, we know that atom
 types 1 to 7 are from the PEG atoms, and atom types 8 and 9 are from
 the water molecules. 
 
-One can create atom groups using the atom types with the *select_atoms* option of MDAnalysis:
+One can create atom groups using the atom types with the *select_atoms* option
+of MDAnalysis:
 
 .. code-block:: python
 
@@ -78,8 +80,8 @@ Let us print the number of atoms in each group:
     atoms in h2o: 3045
 
 Atom groups are atom containers, from which information about the atoms can be read.
-For instance, one can loop over the 6 first atoms from the peg group, and extract their IDs,
-types, masses, and charges:
+For instance, one can loop over the 6 first atoms from the peg group, and extract
+their IDs, types, masses, and charges:
 
 .. code-block:: python
 
@@ -100,8 +102,8 @@ types, masses, and charges:
 Extract temporal evolution
 --------------------------
 
-Let us extract the position of the first atom of the peg group (i.e. the hydrogen of type 4),
-and store its coordinates in each frame into a list:
+Let us extract the position of the first atom of the peg group (i.e. the hydrogen
+of type 4), and store its coordinates in each frame into a list:
 
 .. code-block:: python
 
@@ -135,8 +137,8 @@ Counting the bonds of a CNT
 
 Here, we re-use the trajectory generated during the second part *Breakable bonds*
 of the :ref:`carbon-nanotube-label` tutorial. It is recommended that you follow this tutorial
-first, but you can also directly download the |dump_cnt|
-file and the |data_cnt| file and continue with this MDA tutorial.
+first, but you can also directly download the |dump_cnt| file and the |data_cnt|
+file and continue with this MDA tutorial.
 
 .. |dump_cnt| raw:: html
 
@@ -150,16 +152,17 @@ Create a Universe
 -----------------
 
 Open a new Jupyter Notebook and call it *measure_bond_evolution.ipynb*. First,
-let us import both *MDAnalysis* and *NumPy* by copying the following
-lines into *measure_bond_evolution.ipynb*.
+let us import both *MDAnalysis* and *NumPy* by copying the following lines into
+*measure_bond_evolution.ipynb*.
 
 .. code-block:: python
 
     import MDAnalysis as mda
     import numpy as np
 
-Then, let us create a MDAnalysis *universe* using the LAMMPS data file *cnt_atom.data* as topology,
-and the *lammpstrj* file as trajectory. Add the following lines into *measure_bond_evolution.ipynb*:
+Then, let us create a MDAnalysis *universe* using the LAMMPS data file *cnt_atom.data*
+as topology, and the *lammpstrj* file as trajectory. Add the following lines into
+*measure_bond_evolution.ipynb*:
 
 .. code-block:: python
 
@@ -170,9 +173,8 @@ and the *lammpstrj* file as trajectory. Add the following lines into *measure_bo
                      atom_style='id type xs ys zs',
                      guess_bonds=True, vdwradii={'1':1.7})
 
-Since the *.data* file does not contain any bond information
-the original bonds are guessed using the bond guesser
-of MDAnalysis using *guess_bonds=True*.
+Since the *.data* file does not contain any bond information the original bonds
+are guessed using the bond guesser of MDAnalysis using *guess_bonds=True*.
 
 Note that the bond guesser of MDAnalysis will not update the list of bond
 over time, so we will need to use a few tricks to extract the evolution 
@@ -203,8 +205,8 @@ as the number of atoms, or the number of frames in the trajectory:
     Number of atoms = 690
     Number of frames = 286
 
-It is also possible to access the indexes of the atoms that
-are considered as bonded by the bond guesser of MDAnalysis:
+It is also possible to access the indexes of the atoms that are considered as
+bonded by the bond guesser of MDAnalysis:
 
 .. code-block:: python
 
@@ -218,7 +220,8 @@ are considered as bonded by the bond guesser of MDAnalysis:
     [686 689]
     [688 689]]
 
-MDAnalysis also offers the possibility to loop over all the frame of the trajectory using:
+MDAnalysis also offers the possibility to loop over all the frame of the
+trajectory using:
 
 .. code-block:: python
 
@@ -253,13 +256,12 @@ where the three columns of the array are the *x*, *y*, and *z* coordinates of th
 Counting the bonds
 ------------------
 
-In order to measure the evolution of the number of
-bonds over time, let us loop over the trajectory
-and manually extract the inter-atomic distance over time. 
+In order to measure the evolution of the number of bonds over time, let us loop
+over the trajectory and manually extract the inter-atomic distance over time. 
 
 To do so, for every step of the trajectory, let us loop over the indexes of the
-atoms that were initially detected as bonded, and calculate the
-distance between the two atoms, which can be done using:
+atoms that were initially detected as bonded, and calculate the distance between
+the two atoms, which can be done using:
 
 .. code-block:: python
 
@@ -270,9 +272,8 @@ distance between the two atoms, which can be done using:
             pos2 = u.atoms.positions[u.atoms.indices == id2][0]
             r = np.sqrt(np.sum((pos1-pos2)**2))
 
-Then, let us assume that if :math:`r` is larger that a 
-certain cut-off value of, let's say, :math:`1.8\,Å`,
-the bond is broken:
+Then, let us assume that if *r* is larger that a certain cut-off value of, let's
+say, 1.8 Å, the bond is broken:
 
 .. code-block:: python
 
@@ -286,8 +287,8 @@ the bond is broken:
             else:
                 print("the bond is broken")
 
-Finally, let us store both the mean length of the bonds
-and the total number of bonds in lists.  
+Finally, let us store both the mean length of the bonds and the total number of
+bonds in lists.  
 
 .. code-block:: python
 
@@ -322,9 +323,7 @@ The data can then be saved to files:
     :alt: plot of the bond length and distance versus time
     :class: only-light
 
-.. container:: figurelegend
-
-    Figure: Evolution of the average bond length (a) and bond number (b) as a function of time.
+Figure: Evolution of the average bond length (a) and bond number (b) as a function of time.
 
 Bond length distributions
 -------------------------
