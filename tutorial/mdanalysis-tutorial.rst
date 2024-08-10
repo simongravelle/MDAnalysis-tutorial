@@ -10,10 +10,12 @@ and (2) post-mortem analysis, using the trajectories dumped in the *lammpstrj* f
 The main advantage of post-mortem analysis is that there is no need to
 know what we want to measure before starting the simulation. 
 
-In these short tutorials, several trajectories are
-imported into Python using MDAnalysis and different
-information is extracted. All the trajectories required for these
-tutorials are provided below and were generated from one of the LAMMPS tutorials.
+In these short tutorials, several trajectories are imported into Python using
+MDAnalysis and different information is extracted. All the trajectories required for these
+tutorials are provided below and were generated from one of the LAMMPS tutorials
+from `LAMMPStutorials.github.io <lammps_tutorials_>`_.
+
+.. _lammps_tutorials: https://lammpstutorials.github.io
 
 Simple trajectory import 
 ========================
